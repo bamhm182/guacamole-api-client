@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/techBeck03/guacamole-api-client/types"
+	"github.com/bamhm182/guacamole-api-client/types"
 )
 
 const (

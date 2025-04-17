@@ -1,9 +1,15 @@
 # Import environment file
-include .env
-# Source all variables in environment file
-# This only runs in the make command shell
-# so won't muddy up, e.g. your login shell
-export $(shell sed 's/=.*//' .env)
+ifeq (,$(strip $(GUACAMOLE_URL)))
+	include .env
+	export $(shell sed 's/=.*//' .env)
+else ifeq (,$(strip $(GUACAMOLE_USERNAME)))
+	include .env
+	export $(shell sed 's/=.*//' .env)
+else ifeq (,$(strip $(GUACAMOLE_PASSWORD)))
+	include .env
+	export $(shell sed 's/=.*//' .env)
+endif
+
 .PHONY:	lint test
 
 all: lint test

@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"net/url"
 
-	 "github.com/bamhm182/guacamole-api-client/types"
+	"github.com/bamhm182/guacamole-api-client/types"
 )
 
 const (
@@ -14,7 +14,7 @@ const (
 
 // CreateSharingProfile creats a guacamole sharing profile
 func (c *Client) CreateSharingProfile(sharingProfile *types.GuacSharingProfile) error {
-	request, err := c.CreateJSONRequest(http.MethodPost, fmt.Sprintf("%s/%s", c.baseURL, sharingProfilesPath), sharingProfile
+	request, err := c.CreateJSONRequest(http.MethodPost, fmt.Sprintf("%s/%s", c.baseURL, sharingProfilesPath), nil)
 
 	if err != nil {
 		return err
@@ -30,7 +30,7 @@ func (c *Client) CreateSharingProfile(sharingProfile *types.GuacSharingProfile) 
 }
 
 // ReadSharingProfile gets a sharing profile by identifier
-func (c *Client) ReadSharingProfile(identifier string) (types.GuacSharingProfile) error {
+func (c *Client) ReadSharingProfile(identifier string) (types.GuacSharingProfile, error) {
 	var ret types.GuacSharingProfile
 	var retParams types.GuacSharingProfileParameters
 
@@ -65,7 +65,7 @@ func (c *Client) ReadSharingProfile(identifier string) (types.GuacSharingProfile
 
 // UpdateSharingProfile updates a sharing profile by identifier
 func (c *Client) UpdateSharingProfile(sharingProfile *types.GuacSharingProfile) error {
-    request, err := c.CreateJSONRequest(http.MethodPut, fmt.Sprintf("%s/%s/%s", c.baseURL, sharingProfilesPath, url.QueryEscape(sharingProfile.identifier)), nil)
+	request, err := c.CreateJSONRequest(http.MethodPut, fmt.Sprintf("%s/%s/%s", c.baseURL, sharingProfilesPath, url.QueryEscape(sharingProfile.Identifier)), nil)
 
 	if err != nil {
 		return err
@@ -81,7 +81,7 @@ func (c *Client) UpdateSharingProfile(sharingProfile *types.GuacSharingProfile) 
 
 // DeleteSharingProfile deletes a sharing profile by identifier
 func (c *Client) DeleteSharingProfile(identifier string) error {
-    request, err := c.CreateJSONRequest(http.MethodDelete, fmt.Sprintf("%s/%s/%s", c.baseURL, sharingProfilesPath, url.QueryEscape(identifier)), nil)
+	request, err := c.CreateJSONRequest(http.MethodDelete, fmt.Sprintf("%s/%s/%s", c.baseURL, sharingProfilesPath, url.QueryEscape(identifier)), nil)
 
 	if err != nil {
 		return err
@@ -97,11 +97,11 @@ func (c *Client) DeleteSharingProfile(identifier string) error {
 }
 
 // ListSharingProfiles lists all sharing profiles
-func (c *Client) ListSharingProfiles() ([]types.GuacSharingProfile, err) {
+func (c *Client) ListSharingProfiles() ([]types.GuacSharingProfile, error) {
 	var ret []types.GuacSharingProfile
 	var sharingProfileList map[string]types.GuacSharingProfile
 
-    request, err := c.CreateJSONRequest(http.MethodGet, fmt.Sprintf("%s/%s", c.baseURL, sharingProfilesPath), nil)
+	request, err := c.CreateJSONRequest(http.MethodGet, fmt.Sprintf("%s/%s", c.baseURL, sharingProfilesPath), nil)
 
 	if err != nil {
 		return ret, err
