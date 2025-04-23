@@ -1,17 +1,18 @@
 # Go Apache Guacamole API client
 
-This go-based client is intended to be used as an sdk for the [Apache Guacamole](https://guacamole.apache.org/) web API.  To my knowledge this API is undocumented and could therefore change from release to release.
+This go-based client is intended to be used as an sdk for the [Apache Guacamole](https://guacamole.apache.org/) web API.
+To my knowledge this API is undocumented and could therefore change from release to release.
 
 The primary intent of this sdk is to be used with the following Terraform provider:
 
 https://registry.terraform.io/providers/bamhm182/guacamole/latest
 
-Be sure to checkout the release that matches the version of Guacamole you are running.  The developement of this sdk started with the Guacamole 1.2.0 release so no prior releases are currently supported.
+Be sure to checkout the release that matches the version of Guacamole you are running.
+The developement of this sdk started with the Guacamole 1.2.0 release so no prior releases are currently supported.
 
 # Usage
 
 ## Connect/Discconect
-
 
 ```go
 package main
@@ -60,5 +61,19 @@ func main() {
     make test
     ```
 
+### Nix
+
+A Nix DevShell has been created which will automatically spin up an ephemeral Guacamole stack for testing purposes.
+This can be activated via the following command:
+
+```
+nix develop
+```
+
 ## Examples
+
 Check the examples folder for more detailed usage examples
+
+# Thanks
+
+Thanks to [techBeck03](https://github.com/techBeck03) for the original creation of this codebase forked from [here](https://github.com/techBeck03/guacamole-api-client).

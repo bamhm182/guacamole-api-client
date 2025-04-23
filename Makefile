@@ -15,11 +15,11 @@ endif
 all: lint test
 
 lint:
-	go vet ./
-	go fmt ./
+	go vet ./guacamole
+	go fmt ./guacamole
 
 test: lint
-	go test -count=1 -v -cover --race -tags="unittests" ./
+	go test -count=1 -v -cover --race -tags="unittests" ./guacamole
 
 test_specific: lint
-	go test -count=1 -v -cover --race -tags="specific" ./
+	go test -count=1 -v -cover --race -tags="specific" ./guacamole
