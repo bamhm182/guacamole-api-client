@@ -2673,6 +2673,7 @@
         summary: "Update a Sharing Profile"
         parameters: 
           - $ref: '#/components/parameters/DbTypeParam'
+          - $ref: '#/components/parameters/SharingProfileID'
         requestBody: 
           required: true
           content: 
@@ -2711,13 +2712,8 @@
           - "Connections"
         summary: "Get Usage History of a Given Connection"
         parameters: 
-          - 
-            in: "path"
-            name: "id"
-            schema: 
-              type: "string"
-            required: true
           - $ref: '#/components/parameters/DbTypeParam'
+          - $ref: '#/components/parameters/ConnectionID'
         responses: 
           200: 
             description: ""
@@ -2737,13 +2733,8 @@
           - "Connections"
         summary: "Get Usage Parameters of a Given Connection"
         parameters: 
-          - 
-            in: "path"
-            name: "id"
-            schema: 
-              type: "string"
-            required: true
           - $ref: '#/components/parameters/DbTypeParam'
+          - $ref: '#/components/parameters/ConnectionID'
         responses: 
           200: 
             description: ""
